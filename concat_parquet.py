@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import paratext
-import pandas
+import pandas as pd
 import lz4.frame
 import gzip
 import io
@@ -20,9 +20,17 @@ print((df))
 from glob import glob
 from plumbum.cmd import rm
 
-for x in glob('cboe/parquet_BTCUSD/*.parquet'):
+all_dataframes = []
+for x in sorted(glob('cboe/parquet_fills_only_BTCUSD/*.parquet')):
   print(x)
-  outfile = x.replace('cboe/parquet_BTCUSD/', 'cboe/parquet_fills_only_BTCUSD/')
   df = pq.read_table(x).to_pandas()
-  df = df[df['Event Type'] == 'Fill']
-  pq.write_table(pa.Table.from_pandas(df), outfile, compression='snappy')
+  all_dataframes.append(df)
+result = pd.concat(all_dataframes)
+pq.write_table(pa.Table.from_pandas(result), 'cboe/parquet_fills_only_BTCUSD.parquet', compression='snappy')
+
+'''
+for x in sorted(glob('cboe/parquet_fills_only_BTCUSD/*.parquet')):
+  print(x)
+  df = pq.read_table(x).to_pandas()
+  print(df.dtypes.to_dict())
+'''
