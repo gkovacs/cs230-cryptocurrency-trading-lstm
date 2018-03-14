@@ -7,3 +7,4 @@ tmp
 .ipynb_checkpoints
 cboe
 Gemini_BTCUSD_1h.csv
+*.csv
