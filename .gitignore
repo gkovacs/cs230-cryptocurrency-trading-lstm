@@ -1,0 +1,9 @@
+wsgidav.conf
+__pycache__
+tmp
+._.DS_Store
+.DS_Store
+.dropbox
+.ipynb_checkpoints
+cboe
+Gemini_BTCUSD_1h.csv
