@@ -1,5 +1,9 @@
 #!/bin/bash
 
+rm -r ~/cboe/parquet_BTCUSD
+rm -r ~/cboe/parquet_fills_only_BTCUSD
+mkdir ~/cboe/parquet_fills_only_BTCUSD
+cp -r /media/WD2TB/cs230-data-backup/lz4/ ~/cboe/parquet_BTCUSD
 python to_parquet.py
 python write_only_fills.py
 python concat_parquet.py
