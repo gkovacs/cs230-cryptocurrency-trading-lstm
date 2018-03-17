@@ -4,6 +4,6 @@ cd ~/cryptocurrency-trading-geza
 git pull origin master
 cd ~/cryptocurrency-trading-jon
 git pull origin master
-~/cryptocurrency-trading-pascal
+cd ~/cryptocurrency-trading-pascal
 git pull origin master
 
