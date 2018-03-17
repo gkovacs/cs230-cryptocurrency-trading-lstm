@@ -1,0 +1,5 @@
+#!/bin/bash
+
+python to_parquet.py
+python write_only_fills.py
+python concat_parquet.py

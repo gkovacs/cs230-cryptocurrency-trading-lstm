@@ -26,8 +26,9 @@ dtypes = {'Event ID': dtype('int64'), 'Event Date': dtype('O'), 'Event Time': dt
 
 for x in sorted(glob('cboe/parquet_BTCUSD/BTCUSD*.csv.lz4')):
   print(x)
-  df = pandas.read_csv(io.TextIOWrapper(lz4.frame.open(x)), dtype=dtypes) # low_memory=False, 
+  #df = pandas.read_csv(io.TextIOWrapper(lz4.frame.open(x)), dtype=dtypes) # low_memory=False, 
   #df = pd.read_csv('BTCUSD_order_book_20171021.csv', low_memory=False)
+  df = pd.read_csv(io.TextIOWrapper(lz4.frame.open(x)), low_memory=False)
   df = df.astype(dtype=dtypes)
   table = pa.Table.from_pandas(df)
   outfile = x.replace('.csv.lz4', '.parquet')
