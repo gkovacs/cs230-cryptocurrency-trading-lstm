@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rsync -avz ec2:/home/ubuntu/cryptocurrency-trading-geza/models/* ./models/
