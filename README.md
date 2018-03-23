@@ -1,4 +1,4 @@
-# crypocurrency-trading
+# cryptocurrency-trading
 
 ## About
 
